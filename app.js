@@ -5,10 +5,10 @@ const PORT = process.env.PORT || 3000;
 let myName="Katheryn White";
 
 
-    // set the view engine to ejs
-    app.set('view engine', 'ejs');
+// set the view engine to ejs
+app.set('view engine', 'ejs');
 
-app.get('/', (req, res) => {
+app.get('/',  (req, res) => {
   res.send('<h1 style="background-color:Pink;"> Helllllllo World </h1>')
 })
 
@@ -23,11 +23,15 @@ app.get('/show', (req, res) => {
 })
 
 app.get('/ejs', (req, res) => {
+  console.log("in /ejs before render:", myName);
+  
+  res.render('index', {myname: myName});
+  console.log("after render /ejs:", myName);
+})
 
-  res.render('index');
-});
-
-
+app.get('/name', (req, res) => {
+  console.log("in get to slash name", req.params.ejsFormName);
+})
 
 console.log('in the node console');
 
